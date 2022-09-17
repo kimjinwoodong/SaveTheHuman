@@ -1,0 +1,86 @@
+﻿<Page x:Class="Save_the_human_rev1.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Save_the_human_rev1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+    <Page.Resources>
+        <ControlTemplate x:Key="EnemyTemplate" TargetType="{x:Type ContentControl}">
+            <Grid>
+                <Ellipse Height="100" Stroke="Black" Width="100" Fill="Red"/>
+            </Grid>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="160"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition />
+            <RowDefinition Height="160"/>
+        </Grid.RowDefinitions>
+        <ProgressBar Grid.Column="1" Height="20 "  Grid.Row="2" />
+        <Button x:Name="StartButton" Content="Start!" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Grid.Row="2" Click="StartButton_Click" />
+        <ContentControl Grid.Column="2" Content="ContentControl" HorizontalAlignment="Left" Margin="250,139,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+
+        <Canvas x:Name="PlayArea" Grid.Row="1" Grid.ColumnSpan="3">
+            <Canvas.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF69132A" Offset="1"/>
+                </LinearGradientBrush>
+            </Canvas.Background>
+            <StackPanel x:Name="Human" HorizontalAlignment="Center" Canvas.Left="0" Orientation="Vertical" Canvas.Top="0" VerticalAlignment="Center">
+                <Ellipse Height="10" Stroke="Black" Width="10" Fill="White"/>
+                <Rectangle Height="25" Stroke="Black" Width="10" Fill="White"/>
+            </StackPanel>
+            <Rectangle x:Name="Target" Height="50"  Width="50" 
+                       Canvas.Left="554" Canvas.Top="35"
+                       Stroke="Black" RenderTransformOrigin="0.5,0.5" >
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Canvas>
+        <StackPanel Grid.Column="2" Margin="12,10,12,20" Orientation="Vertical" Grid.Row="2">
+            <TextBlock TextWrapping="Wrap" Text="Avoid These" Foreground="White"
+                   Height="24" Width="79"/>
+            <ContentControl x:Name="EnemyTemplate" Template="{StaticResource EnemyTemplate}" Content="EnemyTemplate" 
+                Foreground="White"
+                FontSize="8" Height="101" Width="112"/>
+
+
+
+        </StackPanel>
+        <TextBlock x:Name="GameOverText"  TextWrapping="Wrap" 
+                   Text="GameOver" 
+                   FontFamily="Arial Black" FontSize="50" 
+                   FontWeight="Bold" FontStyle="Italic" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Foreground="#FFD2C31E" Grid.Column="1" Grid.Row="1"/>
+
+
+
+    </Grid>
+</Page>
