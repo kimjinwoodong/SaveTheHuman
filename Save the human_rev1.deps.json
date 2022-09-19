@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Save the human_rev1/1.0.0": {
+        "runtime": {
+          "Save the human_rev1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Save the human_rev1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
